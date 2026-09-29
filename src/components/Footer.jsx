@@ -77,8 +77,8 @@ function Footer() {
                 </li>
 
                 <li className="mb-2 bg-black">
-                  <Link to="/resturant" className="text-white text-decoration-none bg-black">
-                    Restaurants
+                  <Link to="/restaurant" className="text-white text-decoration-none bg-black">
+                    Restaurant
                   </Link>
                 </li>
 

@@ -105,8 +105,8 @@ function Navbar() {
                                 <Link className="dropdown-item" to="/bars">
                                     BARS
                                 </Link>
-                                <Link className="dropdown-item" to="/resturant">
-                                    RESTURANT
+                                <Link className="dropdown-item" to="/restaurant">
+                                    RESTAURANT
                                 </Link>
                             </div>
                         </li>

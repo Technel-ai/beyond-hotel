@@ -3,7 +3,7 @@ import { FaChevronDown } from "react-icons/fa";
 import {Link} from 'react-router-dom' 
 import {useNavigate} from 'react-router-dom'
 
-function Bookings() {
+function BookingForm() {
   const today = new Date().toISOString().split("T")[0];
 
   const [checkIn, setCheckIn] = useState(today);
@@ -15,11 +15,20 @@ function Bookings() {
   const navigate = useNavigate(); 
 
   const handleBooking = () => {
-  navigate("/BookingCard", {
-    state: {
-      checkIn,
-      checkOut,
-      adults,
+    if (!checkOut) {
+      alert("Please select a check-out date.");
+      return;
+    }
+    if (checkIn >= checkOut) {
+      alert("check-out date must be after check-in date.");
+      return;
+    }
+  
+    navigate("/BookingCard", {
+      state: {
+        checkIn,
+        checkOut,
+        adults,
       children,
       rooms, 
     },
@@ -119,4 +128,4 @@ function Bookings() {
   );
 }
 
-export default Bookings;
+export default BookingForm;

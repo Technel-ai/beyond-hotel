@@ -4,9 +4,19 @@ import Loading from './components/Loading'
 import Footer from './components/Footer'
 import GetInTouch from './components/GetInTouch'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Bookings from './components/Bookings'
+import BookingForm from './components/BookingForm'
 import BookingCard from './components/BookingCard'
 import BookingDetails from './components/BookingDetails'
+import BookingSuccess from "./pages/BookingSuccess";
+import PaymentSuccess from "./pages/PaymentSuccess";
+import AdminBookings from "./admin/Bookings";
+import AdminLayout from "./admin/AdminLayout";
+import AdminDashboard from "./admin/AdminDashboard";
+import Rooms from "./admin/Rooms";
+import Payments from "./admin/Payments"; 
+import Guests from "./admin/Guests";
+import PublicLayout from "./layouts/PublicLayout";
+import Restaurant from './pages/Restaurant'
 
 
 
@@ -21,10 +31,9 @@ const PresidentialSuite = React.lazy(() => import("./pages/PresidentialSuite"))
 const AboutUs = React.lazy(() => import("./pages/AboutUs"))
 const Bars = React.lazy(() => import("./pages/Bars"))
 const GymPool = React.lazy(() => import("./pages/GymPool"))
-const Resturant = React.lazy(() => import("./pages/Resturant"))
+// const BookingDetails = React.lazy(() => import("./components/BookingDetails"))
 const MeetingRoom = React.lazy(() => import("./pages/MeetingRoom"))
 const ConventionCenter = React.lazy(() => import("./pages/ConventionCenter"))
-// const BookingCard = React.lazy(() => import("./pages/BookingCard"))
 
 
 
@@ -38,32 +47,55 @@ function App() {
         </div>}       
       >
         <BrowserRouter>
-          <Navbar />
-          
+
           <Routes>
-            <Route path='/' element={<Home/>} />
-            <Route path='/about' element={<AboutUs/>} />
-            <Route path='/contact' element={<ContactUs/>} />
-            <Route path='/luxuryDeluxe' element={<LuxuryDeluxe/>} />
-            <Route path='/standardSuite' element={<StandardSuite/>} />
-            <Route path='/executiveSuite' element={<ExecutiveSuite/>} />
-            <Route path='/classicSuite' element={<ClassicSuite/>} />
-            <Route path='/diplomaticSuite' element={<DiplomaticSuite/>} />
-            <Route path='/presidentialSuite' element={<PresidentialSuite/>} />
-            <Route path="/bars" element={<Bars />} />
-            <Route path="/gymPool" element={<GymPool />} />
-            <Route path="/restaurant" element={<Resturant />} />
-            <Route path="/meetingRoom" element={<MeetingRoom />} />
-            <Route path="/conventionCenter" element={<ConventionCenter />} />
-            <Route path="/resturant" element={<Resturant />} />
-            <Route path="/bookings" element={<Bookings />} />
-            <Route path="/bookingCard" element={<BookingCard />} />
-            <Route path="/bookingDetails" element={<BookingDetails />} />
+
+            {/* PUBLIC WEBSITE */}
+            <Route element={<PublicLayout />}>
+
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<AboutUs />} />
+              <Route path="/contact" element={<ContactUs />} />
+
+              <Route path="/luxuryDeluxe" element={<LuxuryDeluxe />} />
+              <Route path="/standardSuite" element={<StandardSuite />} />
+              <Route path="/executiveSuite" element={<ExecutiveSuite />} />
+              <Route path="/classicSuite" element={<ClassicSuite />} />
+              <Route path="/diplomaticSuite" element={<DiplomaticSuite />} />
+              <Route path="/presidentialSuite" element={<PresidentialSuite />} />
+
+              <Route path="/bars" element={<Bars />} />
+              <Route path="/gymPool" element={<GymPool />} />
+              <Route path="/restaurant" element={<Restaurant />} />
+              <Route path="/meetingRoom" element={<MeetingRoom />} />
+              <Route path="/conventionCenter" element={<ConventionCenter />} />
+
+              <Route path="/bookings" element={<BookingForm />} />
+              <Route path="/bookingCard" element={<BookingCard />} />
+              <Route path="/bookingDetails" element={<BookingDetails />} />
+
+              <Route path="/booking-success" element={<BookingSuccess />} />
+              <Route path="/payment-success" element={<PaymentSuccess />} />
+
+            </Route>
+
+            {/* ADMIN PANEL */}
+            <Route path="/admin" element={<AdminLayout />}>
+
+              <Route index element={<AdminDashboard />} />
+
+              <Route path="rooms" element={<Rooms />} />
+
+              <Route path="bookings" element={<AdminBookings />} />
+
+              <Route path="payments" element={<Payments />} />
+
+              <Route path="guests" element={<Guests />} />
+
+            </Route>
+
           </Routes>
-          {/* <Bookings /> */}
-          <Footer/>
-          <GetInTouch />
-          
+
         </BrowserRouter>
       </React.Suspense>
     </div>
